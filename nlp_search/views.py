@@ -17,12 +17,21 @@ def question_query_post(request):
         answer = Question.objects.get(question=question).answer
     except:
         answer = question_transformer(question, toolkit.content, attempt)
+
+    sentiment = sentiment_transformer(question)
     
     response = JsonResponse(
         {
             'question': question,
             'toolkit_name': toolkit_name,
-            'answer': answer
+            'answer': answer,
+            'sentiment': [
+                {
+                    'label': sentiment.get('label'),
+                    'score': str(sentiment.get('score'))
+                }
+            ]
+
         }
     )
 
@@ -31,12 +40,17 @@ def question_query_post(request):
 @api_view(['POST'])
 def sentiment_analysis_post(request):
     text_input = request.data.get('text')
-    answer = sentiment_transformer(text_input)
+    sentiment = sentiment_transformer(text_input)
 
     response = JsonResponse(
         {
             'text': text_input,
-            'answer': answer
+            'answer': [
+                {
+                    'label': sentiment.get('label'),
+                    'score': str(sentiment.get('score'))
+                }              
+            ]
         }
     )
 

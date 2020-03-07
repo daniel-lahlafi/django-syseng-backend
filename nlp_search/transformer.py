@@ -28,4 +28,5 @@ def question_transformer(question, context, attempt):
 
 def sentiment_transformer(text):
     nlp = pipeline("sentiment-analysis")
-    return nlp(text)[0].get('label')
+    print(nlp(text))
+    return nlp(text)[0]
