@@ -23,3 +23,13 @@ def web_scrap(request):
     )
 
     return response
+
+@api_view(['GET'])
+def get_toolkit_names(request):
+    toolkit_names = [toolkit.name for toolkit in Toolkit.objects.all()]
+    response = JsonResponse(
+        {
+            'toolkit_names': toolkit_names
+        }
+    )
+    return response

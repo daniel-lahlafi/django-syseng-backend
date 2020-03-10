@@ -14,7 +14,7 @@ def getToolkit(url, toolkit_name):
 
     soup = soup.find("div", class_="content")
     soup.find("ul", class_="breadcrumbs").decompose()
-
+    soup.find("h1").decompose()
     text_arr = [t for t in soup.find_all(text=True) if t.parent.name is not "" ]
     text = ""
     for t in text_arr:

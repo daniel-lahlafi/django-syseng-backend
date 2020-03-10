@@ -11,10 +11,12 @@ def question_query_post(request):
     question = request.data.get('question')
     toolkit_name = request.data.get('toolkit_name')
     attempt = request.data.get('attempt')
+    is_saved_answer = False
 
     toolkit = get_object_or_404(Toolkit, name=toolkit_name)
     try:
-        answer = Question.objects.get(question=question).answer
+        answer = Question.objects.get(question=question, toolkit=toolkit).answer
+        is_saved_answer = True
     except:
         answer = question_transformer(question, toolkit.content, attempt)
 
@@ -25,6 +27,7 @@ def question_query_post(request):
             'question': question,
             'toolkit_name': toolkit_name,
             'answer': answer,
+            'is_saved_answer': is_saved_answer, 
             'sentiment': [
                 {
                     'label': sentiment.get('label'),
