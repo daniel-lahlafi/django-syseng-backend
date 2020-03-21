@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 
 @api_view(['POST'])
 def web_scrap(request):
-    if request.data.get('overwrite') == "True":
+    if request.data.get('overwrite') == "true":
         for toolkit in Toolkit.objects.all():
             toolkit.content = ""
             toolkit.save()
