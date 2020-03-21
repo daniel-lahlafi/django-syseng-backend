@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'save_questions.apps.SaveQuestionsConfig',
     'web_scrap.apps.WebScrapConfig',
     'quiz.apps.QuizConfig',
+    'frontend.apps.FrontendConfig',
 
     # Third party apps
     'rest_framework',

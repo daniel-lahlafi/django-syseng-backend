@@ -10,7 +10,7 @@ from web_scrap.models import Toolkit
 def question_query_post(request):
     question = request.data.get('question')
     toolkit_name = request.data.get('toolkit_name')
-    attempt = request.data.get('attempt')
+    attempt = int(request.data.get('attempt'))
     is_saved_answer = False
 
     toolkit = get_object_or_404(Toolkit, name=toolkit_name)

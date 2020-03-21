@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Medichat - RCGP Chatbot</title>
+    <meta name="description" content="Proving question answering for the RCGP toolkits">
+    <meta name="keywords" content="MediChat, Q&A, quiz, RCGP, toolkits"/>
+    <meta name="subject" content="">
+    <meta name="copyright" content="">
+    <link rel="icon" href="{% static '/frontend/assets/images/MediIcon.png' %}" type="image/x-icon" />
+
+    <link rel="stylesheet" type="text/css" href="{% static '/frontend/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/frontend/assets/vendors/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/frontend/css/app.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static '/frontend/css/theme/default-theme.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/frontend/css/typing.css' %}">
+
+</head>
+<body class="default-theme">
+    <input type="hidden" id="csrf_token" value="{{ csrf_token }}">
+
+    <!-- Preloader Start -->
+    <div class="preloader"></div>
+    <!-- Preloader end -->
+
+    <!-- main wrapper start -->
+    <div class="main-wrapper">
+        <div class="chatapp">
+            <!-- navbar start -->
+            <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-white border-bottom shadow-sm">
+                <a class="navbar-brand" href="{% url 'homepage' %}">
+                    <img src="{% static '/frontend/assets/images/MediIcon.png' %}" width="50" height="50" class="d-inline-block align-top" alt="">
+                    <h1>MediChat</h1>
+                    
+                </a>
+            </nav>
+            <!-- navbar end -->
+
+            <!-- sidebar start -->
+            <div class="chatapp__sidebar">
+                <ul class="nav" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'homepage' %}">
+                            <i class="mdi mdi-message-text-outline"></i><span>Chat</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'quiz' %}">
+                            <i class="mdi mdi-calendar-question"></i><span>Quiz</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- sidebar end -->
+
+            <!-- main content start -->
+            <div class="chatapp__content">
+                <div class="chatapp__messagetab">
+                    <!-- conversations start -->
+                    <div class="chatapp__conversations">
+                        <!-- conversation wrapper start -->
+                        <div class="conversation-wrapper">
+                            <div class="conversation-panel">
+                                <div class="conversation-panel__body" >
+                                    <div class="custom-scrollbar2">
+                                        <div class="container">
+                                            <ul class="chat-style-2" id="words">
+                                                <li class="message received">
+                                                    <div class="message__text">Hi I am Meddy, What can I do for you?</div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="conversation-panel__footer">
+                                    <div class="composer">
+                                        <select class ="toolkit-drop-box dropup" id="SelectedToolkit"></select>
+                                        <div class="composer__middle">
+                                            <input type ="text" class="form-control" rows="1" placeholder="Type a message..." id="talkwords">
+                                        </div>
+                                        <div class="composer__right">
+                                            <button class="composer__right--send" id="talksub"><i class="mdi mdi-send"></i></button>         
+                                        </div>
+                                    </div>                               
+                                </div>
+                            </div>
+                        </div>
+                        <!-- conversation panel end -->
+
+                        
+                    <!-- conversations end -->
+                </div>
+            </div>
+            <!-- main content end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main wrapper end -->
+
+    <!-- Javascripts Files -->
+    <script src="{% static '/frontend/js/Talk.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="{% static '/frontend/js/popper.min.js' %}" ></script>
+    <script src="{% static '/frontend/assets/vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/frontend/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static '/frontend/assets/vendors/material-floating-button/dist/mfb.min.js' %}"></script>
+    <script src="{% static '/frontend/js/main.min.js' %}"></script>
+</body>
+</html>

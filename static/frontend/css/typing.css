@@ -1,0 +1,27 @@
+#typing-loader{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation: typing 1s linear infinite alternate;
+    position: relative;
+    margin: 0 auto;
+    margin-right: 80px;
+}
+
+
+@keyframes typing{
+    0%{
+        background-color: rgba(0,0,0, 1);
+        box-shadow: 2.5rem 0 0 0 rgba(0,0,0,0.2),
+        5rem 0 0 0 rgba(0,0,0,0.2);
+    }
+    25%{
+        background-color: rgba(0,0,0, 0.4);
+        box-shadow: 2.5rem 0 0 0 rgba(0,0,0,2),
+        5rem 0 0 0 rgba(0,0,0,0.2);
+    }
+    75%{ background-color: rgba(0,0,0, 0.4);
+        box-shadow: 2.5rem 0 0 0 rgba(0,0,0,0.2),
+        5rem 0 0 0 rgba(0,0,0,1);
+    }
+}

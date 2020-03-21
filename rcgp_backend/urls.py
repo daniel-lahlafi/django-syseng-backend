@@ -8,5 +8,6 @@ urlpatterns = [
     path('api/', include('save_questions.urls')),
     path('api/', include('nlp_search.urls')),
     path('api/', include('web_scrap.urls')),
-    path('api/', include('quiz.urls'))
+    path('api/', include('quiz.urls')),
+    path('', include('frontend.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
