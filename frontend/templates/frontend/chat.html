@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{% static '/frontend/css/app.css' %}">    
     <link rel="stylesheet" type="text/css" href="{% static '/frontend/css/theme/default-theme.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/frontend/css/typing.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/frontend/css/model.css' %}">
 
 </head>
 <body class="default-theme">
@@ -57,12 +58,17 @@
             <!-- sidebar end -->
 
             <!-- main content start -->
-            <div class="chatapp__content">
+            <div class="chatapp__content" >
+
                 <div class="chatapp__messagetab">
                     <!-- conversations start -->
+
                     <div class="chatapp__conversations">
                         <!-- conversation wrapper start -->
+
                         <div class="conversation-wrapper">
+                            
+
                             <div class="conversation-panel">
                                 <div class="conversation-panel__body" >
                                     <div class="custom-scrollbar2">
@@ -72,8 +78,11 @@
                                                     <div class="message__text">Hi I am Meddy, What can I do for you?</div>
                                                 </li>
                                             </ul>
+                                            <div id="canvas_container"></div>
+                                            <input type="hidden" id="toggleModelAnn">
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="conversation-panel__footer">
@@ -87,6 +96,8 @@
                                         </div>
                                     </div>                               
                                 </div>
+
+
                             </div>
                         </div>
                         <!-- conversation panel end -->
@@ -94,6 +105,7 @@
                         
                     <!-- conversations end -->
                 </div>
+
             </div>
             <!-- main content end -->
                         </div>
@@ -112,5 +124,6 @@
     <script src="{% static '/frontend/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
     <script src="{% static '/frontend/assets/vendors/material-floating-button/dist/mfb.min.js' %}"></script>
     <script src="{% static '/frontend/js/main.min.js' %}"></script>
+    <script src="{% static '/frontend/js/model.js' %}"></script>
 </body>
 </html>

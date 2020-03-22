@@ -75,10 +75,6 @@ window.onload = function() {
 }
 
 function save_question() {
-    console.log(question)
-    console.log(document.getElementById("SelectedToolkit").value)
-    console.log(question_answer)
-
     $.ajax({
         type: "POST",
         url: '/api/questions/',   
@@ -102,6 +98,7 @@ function save_question() {
 
 function sendRequest() {
     input_box = document.getElementById("talkwords")
+    document.getElementById("toggleModelAnn").click()
 
     $.ajax({
         type: "POST",
@@ -141,6 +138,7 @@ function sendRequest() {
             TalkSub.disabled = false
             input_box.value = ""
             input_box.focus()
+            document.getElementById("toggleModelAnn").click()
 
         },
         error: function(xhr, ajaxOptions, thrownError) {

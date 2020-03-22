@@ -12,4 +12,4 @@ class Question(models.Model):
     
     question = models.CharField(max_length=256, unique=True)
     toolkit = models.ForeignKey(Toolkit, on_delete=models.CASCADE)
-    answer = models.CharField(max_length=256)
+    answer = models.TextField(max_length=256)
