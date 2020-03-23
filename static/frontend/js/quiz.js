@@ -75,31 +75,31 @@ function loadQuiz(toolkit_name) {
                 // and for each available answer...
                   // ...add an HTML radio button
                   answers.push(
-                    `<label id="${questionNumber}1">
+                    `<label id="${questionNumber}1" class= "answer1">
                       <input type="radio" name="question${questionNumber}" value="${1}">
-                      ${1} :
-                      ${currentQuestion.answer_1}
+                      <span class="radio-style1">${1} :
+                      ${currentQuestion.answer_1}</span>
                     </label>`
                   );
                   answers.push(
-                    `<label id="${questionNumber}2">
+                    `<label id="${questionNumber}2" class= "answer2">
                       <input type="radio" name="question${questionNumber}" value="${2}">
-                      ${2} :
-                      ${currentQuestion.answer_2}
+                      <span class="radio-style2">${2} :
+                      ${currentQuestion.answer_2}</span>
                     </label>`
                   );
                   answers.push(
-                    `<label id="${questionNumber}3">
+                    `<label id="${questionNumber}3" class= "answer3">
                       <input type="radio" name="question${questionNumber}" value="${3}">
-                      ${3} :
-                      ${currentQuestion.answer_3}
+                      <span class="radio-style3">${3} :
+                      ${currentQuestion.answer_3}</span>
                     </label>`
                   );
                   answers.push(
-                    `<label id="${questionNumber}4">
+                    `<label id="${questionNumber}4" class= "answer4">
                       <input type="radio" name="question${questionNumber}" value="${4}">
-                      ${4} :
-                      ${currentQuestion.answer_4}
+                      <span class="radio-style4">${4} :
+                      ${currentQuestion.answer_4}</span>
                     </label>`
                   );
         
@@ -139,35 +139,27 @@ function loadQuiz(toolkit_name) {
                 // add to the number of correct answers
                 numCorrect++;
                 // color the answers green
-                if(userAnswer === "1"){
-                  document.getElementById(`${questionNumber}1`).style.color = 'lightgreen';
+                for (let i = 1; i < 5; i++) {
+                  if (i == userAnswer) {
+                    document.getElementById(`${questionNumber}${userAnswer}`).style.color = 'lightgreen'
+                  } else {
+                    document.getElementById(`${questionNumber}${i}`).style.color = 'red'
+                  }
                 }
-                if(userAnswer === "2"){
-                  document.getElementById(`${questionNumber}2`).style.color = 'lightgreen';
-                }
-                if(userAnswer === "3"){
-                  document.getElementById(`${questionNumber}3`).style.color = 'lightgreen';
-                }
-                if(userAnswer === "4"){
-                  document.getElementById(`${questionNumber}4`).style.color = 'lightgreen';
-                }
+
               }
               // if answer is wrong or blank
               else{
                 // color the answers red
                 answerContainers[questionNumber].style.color = 'red';
                 correctAnswer = currentQuestion.correct_answer;
-                if(correctAnswer == "1"){
-                  document.getElementById(`${questionNumber}1`).style.color = 'lightgreen';
-                }
-                if(correctAnswer == "2"){
-                  document.getElementById(`${questionNumber}2`).style.color = 'lightgreen';
-                }
-                if(correctAnswer == "3"){
-                  document.getElementById(`${questionNumber}3`).style.color = 'lightgreen';
-                }
-                if(correctAnswer == "4"){
-                  document.getElementById(`${questionNumber}4`).style.color = 'lightgreen';
+
+                for (let i = 1; i < 5; i++) {
+                  if (i == correctAnswer) {
+                    document.getElementById(`${questionNumber}${correctAnswer}`).style.color = 'lightgreen'
+                  } else {
+                    document.getElementById(`${questionNumber}${i}`).style.color = 'red'
+                  }
                 }
               }
             });
