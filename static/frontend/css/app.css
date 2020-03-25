@@ -12643,6 +12643,12 @@ body.info-panel-opened .conversation-wrapper {
   }
 }
 
+@media (max-width: 600px) {
+  #canvas_container {
+    display: none;
+  }
+}
+
 /*------------------------------------------------------------------
 13::MATERIAL FLOATING BUTTON STYLESHEET
 

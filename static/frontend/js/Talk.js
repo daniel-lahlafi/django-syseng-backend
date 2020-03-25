@@ -120,6 +120,13 @@ function sendRequest() {
                 sendRequest();
                 return;
             }
+            
+            console.log(response.sentiment[0].score)
+
+            if ((response.sentiment[0].label == 'NEGATIVE') && (response.sentiment[0].score > 0.8)) {
+                comfort_response='<li class="message received"><div class="message__text">' + "I've noticed you are feeling upset with me I'll try do better" + '</div></li>'
+                Words.innerHTML = Words.innerHTML + comfort_response;
+            }
 
             question_answer = response.answer
             answer = '<li class="message received"><div class="message__text">' + response.answer + '</div></li>';
@@ -134,7 +141,7 @@ function sendRequest() {
             if (response.is_saved_answer == false) {
                 check_answer();
             }
-    
+            
             TalkSub.disabled = false
             input_box.value = ""
             input_box.focus()
