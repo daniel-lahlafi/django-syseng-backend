@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 
 
-def getToolkit(url, toolkit_name):
+def getToolkit(url):
     url = url.rstrip()
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "lxml")

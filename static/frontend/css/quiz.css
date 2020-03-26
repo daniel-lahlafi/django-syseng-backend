@@ -4752,6 +4752,7 @@ input[type="button"].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  /* margin-right: 15px; */
 }
 
 .card>hr {
@@ -13743,7 +13744,6 @@ margin-bottom: 10px;
 margin-left: 20px;
 }
 
-
 button{
 font-family: 'Work Sans', sans-serif;
 font-size: 20px;
@@ -13762,7 +13762,7 @@ background-color: #6f42c1;
 }
 
 .slide{
-position: absolute;
+/* position: absolute; */
 left: 0px;
 top: 0px;
 width: 100%;
@@ -13796,7 +13796,7 @@ margin-top: 40px;
 margin-bottom: 30px;
 margin-left: 10px;
 text-align: left;
-position: absolute;
+/* position: absolute; */
 }
 
 .answers label{
@@ -13940,3 +13940,12 @@ background-color: yellow;
 background-clip: content-box;
 border-color: yellow;
 }
+
+@media (max-width: 400px) {
+  .col-12 {
+    padding: 0;
+  }
+  .container {
+    padding: 0;
+  }
+} 

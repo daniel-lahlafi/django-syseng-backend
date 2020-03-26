@@ -1,3 +1,5 @@
+var toolkits;
+
 
 window.onload = function() {
   fetch("http://localhost:8000/api/get-toolkit-names")
@@ -5,33 +7,55 @@ window.onload = function() {
       return res.json();
     })
     .then(jsonData => {
-      let quizListContainer = document.getElementById("quiz-list")
-      jsonData.toolkit_names.forEach(element => {
-        let listItem = document.createElement("li")
-        let quizList = document.createElement("div")
-        quizList.onclick = function() {
-          let lists = quizListContainer.querySelectorAll("li")
-          lists.forEach(li => {li.className = ""})
-          listItem.className = "active"
-          
-          loadQuiz(element)
-        }
-        quizList.className = "quizlist"
-        let quizItem = document.createElement("div")
-        quizItem.className = "quizlist__details--name"
-        let quizName = document.createElement("div")
-        quizName.className = "quiz_name"
-        quizName.innerHTML = element
-        quizItem.appendChild(quizName)
-        
-        quizList.appendChild(quizItem)
-        listItem.appendChild(quizList)
-        quizListContainer.appendChild(listItem)
-      });
+      toolkits = jsonData.toolkit_names
+      updateToolkitList()
+      
     })
     .catch(err => {
       console.log(err)
     })
+}
+
+function updateToolkitList(filter="") {
+  let quizListContainer = document.getElementById("quiz-list")
+
+  quizListContainer.innerHTML = "";
+
+  toolkits.forEach(name => {
+    if (!name.toLowerCase().includes(filter)) {
+      console.log("here")
+      return;
+    }
+
+
+    let listItem = document.createElement("li")
+    let quizList = document.createElement("div")
+    quizList.onclick = function() {
+      let lists = quizListContainer.querySelectorAll("li")
+      lists.forEach(li => {li.className = ""})
+      listItem.className = "active"
+      
+      loadQuiz(name)
+    }
+    quizList.className = "quizlist"
+    let quizItem = document.createElement("div")
+    quizItem.className = "quizlist__details--name"
+    let quizName = document.createElement("div")
+    quizName.className = "quiz_name"
+    quizName.innerHTML = name
+    quizItem.appendChild(quizName)
+    
+    quizList.appendChild(quizItem)
+    listItem.appendChild(quizList)
+    quizListContainer.appendChild(listItem)
+  });
+}
+
+function filterToolkits() {
+  let toolkit = document.getElementById("toolkit-search").value
+  updateToolkitList(toolkit.toLowerCase())
+  
+  
 }
 
 

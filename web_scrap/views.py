@@ -13,7 +13,7 @@ def web_scrap(request):
 
     for toolkit in Toolkit.objects.all():
         if toolkit.content == "":
-            toolkit.content = getToolkit(toolkit.url, toolkit.name)
+            toolkit.content = getToolkit(toolkit.url)
             toolkit.save()
 
     response = JsonResponse(
