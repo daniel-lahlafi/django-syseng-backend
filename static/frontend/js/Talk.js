@@ -6,7 +6,7 @@ var Words = document.getElementById("words");
 var TalkWords = document.getElementById("talkwords");
 var TalkSub = document.getElementById("talksub");
 var toolkit_dropdown = document.getElementById('SelectedToolkit');
-
+var randomResponse = new Array("Is there anything else I can help you?","What else can I help you?:)",":)","Hope that helps you:)","Please let me know if you need more help:)");
 
 window.onload = function() {
 /*---------------Initialise the List of Toolkit Names------------------------------------------------- */
@@ -44,7 +44,7 @@ window.onload = function() {
         } else if (toolkit_dropdown.value == "Choose Toolkit") {
             let str = '<li class="message received"><div class="message__text">Please pick a toolkit before asking questions</div></li>';
             Words.innerHTML = Words.innerHTML + str;
-           window.scrollTo(0,document.body.scrollHeight);
+            window.scrollTo(0,document.body.scrollHeight);
 
             return;
         }
@@ -69,6 +69,7 @@ window.onload = function() {
             
         }
         window.scrollTo(0,document.body.scrollHeight);
+        humanlike_response()
 
 
     }
@@ -121,6 +122,8 @@ function sendRequest() {
                 return;
             }
 
+            // Attempt at sentiment analysis
+
             // if ((response.sentiment[0].label == 'NEGATIVE') && (response.sentiment[0].score > 0.8)) {
             //     comfort_response='<li class="message received"><div class="message__text">' + "I've noticed you are feeling upset with me I'll try do better" + '</div></li>'
             //     Words.innerHTML = Words.innerHTML + comfort_response;
@@ -165,3 +168,8 @@ function check_answer() {
     is_confirming_answer = true
 }
 
+function humanlike_response(){
+    index = Math.floor((Math.random()*randomresponse.length))
+    response_random = randomresponse[index]
+    Words.innerHTML = Words.innerHTML + response_random;
+}
