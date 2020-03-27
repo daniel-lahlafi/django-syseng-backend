@@ -69,7 +69,6 @@ window.onload = function() {
             
         }
         window.scrollTo(0,document.body.scrollHeight);
-        humanlike_response()
 
 
     }
@@ -106,7 +105,7 @@ function sendRequest() {
         url: '/api/search',   
         data: {
             csrfmiddlewaretoken: document.getElementById("csrf_token").value,
-            question: question,
+            question: question.toLowerCase().replace(/(!|'|\?)/g, ""),
             toolkit_name: document.getElementById("SelectedToolkit").value,
             attempt: attempt_counter
             },
@@ -141,12 +140,15 @@ function sendRequest() {
     
             if (response.is_saved_answer == false) {
                 check_answer();
+            } else {
+                humanlike_response()
             }
             
             TalkSub.disabled = false
             input_box.value = ""
             input_box.focus()
             document.getElementById("toggleModelAnn").click()
+
 
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -169,7 +171,8 @@ function check_answer() {
 }
 
 function humanlike_response(){
-    index = Math.floor((Math.random()*randomresponse.length))
-    response_random = randomresponse[index]
-    Words.innerHTML = Words.innerHTML + response_random;
+    index = Math.floor((Math.random()*randomResponse.length))
+    response_random = randomResponse[index]
+    response = answer = '<li class="message received"><div class="message__text">'  + response_random + '</div></li>';
+    Words.innerHTML = Words.innerHTML + response;
 }
