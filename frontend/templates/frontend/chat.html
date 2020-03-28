@@ -31,12 +31,12 @@
     <div class="main-wrapper">
         <div class="chatapp">
             <!-- navbar start -->
-            <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-white border-bottom shadow-sm">
+            <nav style="display: flex; justify-content: space-between;" id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-white border-bottom shadow-sm">
                 <a class="navbar-brand" href="{% url 'homepage' %}">
                     <img src="{% static '/frontend/assets/images/MediIcon.png' %}" width="50" height="50" class="d-inline-block align-top" alt="">
                     <h1>MediChat</h1>
-                    
                 </a>
+                <button onclick="redirectToolkit()">Go to toolkit</button>
             </nav>
             <!-- navbar end -->
 

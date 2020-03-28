@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .web_scrapper import getToolkit
 from .models import Toolkit
 from django.http import JsonResponse
@@ -30,6 +30,17 @@ def get_toolkit_names(request):
     response = JsonResponse(
         {
             'toolkit_names': toolkit_names
+        }
+    )
+    return response
+
+@api_view(['GET'])
+def get_toolkit_url(request, toolkit_name):
+    toolkit = get_object_or_404(Toolkit, name=toolkit_name)
+    response = JsonResponse(
+        {
+            'toolkit_name': toolkit.name,
+            'url': toolkit.url
         }
     )
     return response

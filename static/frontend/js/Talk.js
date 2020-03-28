@@ -39,7 +39,7 @@ window.onload = function() {
         if (TalkWords.value == "") {
             let str = '<li class="message received"><div class="message__text">Can\'t have an empty message</div></li>';
             Words.innerHTML = Words.innerHTML + str;
-           window.scrollTo(0,document.body.scrollHeight);
+            window.scrollTo(0,document.body.scrollHeight);
             return;
         } else if (toolkit_dropdown.value == "Choose Toolkit") {
             let str = '<li class="message received"><div class="message__text">Please pick a toolkit before asking questions</div></li>';
@@ -94,6 +94,30 @@ function save_question() {
         }
     });
     
+}
+
+function redirectToolkit() {
+    toolkitName = toolkit_dropdown.value
+    if (toolkitName == "Choose Toolkit") {
+        let str = '<li class="message received"><div class="message__text">Please pick a toolkit first</div></li>';
+        Words.innerHTML = Words.innerHTML + str;
+        window.scrollTo(0,document.body.scrollHeight);
+    } else {
+        const request_get_toolkit_url = new XMLHttpRequest();
+        request_get_toolkit_url.open('GET','http://localhost:8000/api/get-toolkit-url/'+toolkitName,true);
+        request_get_toolkit_url.onload = function() {
+            if (this.status == 200){
+                let url = JSON.parse(request_get_toolkit_url.responseText).url;
+                window.location.replace(url);
+            }
+        }
+        request_get_toolkit_url.onerror = function(){
+            let str = '<li class="message received"><div class="message__text">Error retrieving URL</div></li>';
+            Words.innerHTML = Words.innerHTML + str;
+            window.scrollTo(0,document.body.scrollHeight);
+        };
+        request_get_toolkit_url.send()
+    }
 }
 
 function sendRequest() {
