@@ -26,7 +26,7 @@ SECRET_KEY = 'uw4$9x+@6p@m@nt83zls=eg3un8gi5jch3%qt_z*qrwys)(trp'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "rcgp-chatbot.azurewebsites.net"
+    "https://rcgp-chatbot.azurewebsites.net"
 ]
 
 CORS_ORIGIN_WHITELIST = [

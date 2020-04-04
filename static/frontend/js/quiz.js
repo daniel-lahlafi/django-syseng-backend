@@ -2,7 +2,7 @@ var toolkits;
 
 
 window.onload = function() {
-  fetch("http://localhost:8000/api/get-toolkit-names")
+  fetch("https://rcgp-chatbot.azurewebsites.net/api/get-toolkit-names")
     .then(res => {
       return res.json();
     })
@@ -70,7 +70,7 @@ function loadQuiz(toolkit_name) {
     let questions = [];
     let slides = [];
 
-    fetch("http://localhost:8000/api/quiz/" + toolkit_name)
+    fetch("https://rcgp-chatbot.azurewebsites.net/api/quiz/" + toolkit_name)
         .then(res => {
             return res.json();
         })

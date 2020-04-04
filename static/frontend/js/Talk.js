@@ -16,7 +16,7 @@ window.onload = function() {
     toolkit_dropdown.add(defaultOption);
     toolkit_dropdown.selectedIndex = 0;
     const request_get_toolkit_names = new XMLHttpRequest();
-    request_get_toolkit_names.open('GET','http://localhost:8000/api/get-toolkit-names',true);
+    request_get_toolkit_names.open('GET','https://rcgp-chatbot.azurewebsites.net/api/get-toolkit-names',true);
     request_get_toolkit_names.onload = function() {
         if (this.status == 200){
             let data = JSON.parse(request_get_toolkit_names.responseText).toolkit_names;
@@ -30,7 +30,7 @@ window.onload = function() {
         }
     }
     request_get_toolkit_names.onerror = function(){
-        console.error('An error occurred fetching the JSON from' +'http://localhost:8000/api/get-toolkit-names')
+        console.error('An error occurred fetching the JSON from' +'https://rcgp-chatbot.azurewebsites.net/api/get-toolkit-names')
     };
     request_get_toolkit_names.send()
   /* ----------------------------------------------------------------------------------------------------------------------*/  
@@ -104,7 +104,7 @@ function redirectToolkit() {
         window.scrollTo(0,document.body.scrollHeight);
     } else {
         const request_get_toolkit_url = new XMLHttpRequest();
-        request_get_toolkit_url.open('GET','http://localhost:8000/api/get-toolkit-url/'+toolkitName,true);
+        request_get_toolkit_url.open('GET','https://rcgp-chatbot.azurewebsites.net/api/get-toolkit-url/'+toolkitName,true);
         request_get_toolkit_url.onload = function() {
             if (this.status == 200){
                 let url = JSON.parse(request_get_toolkit_url.responseText).url;
